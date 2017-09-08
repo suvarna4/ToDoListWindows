@@ -1,0 +1,44 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    To-Do List
+  </h1>
+</div>
+<hr>
+<div *ngIf="tasks" class="row">
+  <div class ="col-md-1 col-sm-1"></div>
+  <div class="col-md-2 col-sm-2 text-center" style="margin-top:15px">
+    <h4>Current Task:</h4>
+  </div>
+  <md-select class="col-md-8 col-sm-8" style="width:66%" [(ngModel)]="selectedTask" (change)="beRender()">
+    <md-option *ngFor="let task of tasks" value="{{task.name}}">{{task.name}}</md-option>      
+  </md-select>
+
+</div>
+
+
+<app-timer *ngIf="currentTask && render" [ticks]="currentTask.ticks" (change)="changeTicks($event)"></app-timer>
+
+<div class="row">
+    <div class ="col-md-1 col-sm-1"></div>
+    <div class="col-md-2 col-sm-2 text-center" style="margin-top:10px">
+      <h4>New Task:</h4>
+    </div>
+    <form class="col-md-6 col-sm-6" style="width:50%">
+        <md-form-field style="width:100%">
+          <input mdInput placeholder="Task" #input>
+        </md-form-field>
+    </form>
+    <button md-raised-button color="primary" (click)="submitTask(input.value)" style="margin-top:10px">Add Task</button>
+</div>
+
+<div class="row">
+  <div class="col-md-2 col-sm-2"></div>
+  <div class="text-center col-md-4 col-sm-4">
+      <input type='file' accept='text/plain' multiple (change)='openFile($event)'>    
+  </div>
+  <div class="text-center col-md-2 col-sm-2">
+      <button md-raised-button color="secondary" (click)="downloadFile()" style="margin-top:10px">Export Data</button>
+  </div>
+  <div class ="col-md-4 col-sm-4"></div>
+</div>  

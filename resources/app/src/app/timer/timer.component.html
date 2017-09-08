@@ -1,0 +1,8 @@
+<div>
+<h1>
+  {{hoursDisplay ? hoursDisplay : '00'}} : {{(minutesDisplay) && (minutesDisplay <= 59) ? minutesDisplay : '00'}} : {{(secondsDisplay) && (secondsDisplay <= 59) ? secondsDisplay : '00'}}
+</h1>
+<h2>: {{(msecondsDisplay) && (msecondsDisplay <= 99) ? msecondsDisplay : '00'}}
+</h2>
+<md-checkbox class="float:right" style="margin-left:40px; margin-top:-5px" [(ngModel)]="checked" (change)="changeCheck()">Start</md-checkbox>
+</div>
